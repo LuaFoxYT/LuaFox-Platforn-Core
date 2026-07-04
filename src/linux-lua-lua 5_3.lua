@@ -88,7 +88,10 @@ end
     end
     return out
   end
-  fs.open = io.open
+	fs.open = function(...)
+		log("filesystem.open is deprecated avoid using now use filesystem.[readPart, writePart, readAll, writeAll]")
+		return io.open(...)
+	end
   fs.attributes = lfs.attributes
   fs.remove = function(path)
     if lfs.attributes(path).mode == 'directory' then
@@ -116,6 +119,42 @@ end
     end
     return lfs.currentdir()
   end
+	function fs.readAll(path)
+		assert(fs.exists(path), "File Not Found: " .. path)
+		local f = io.open(path, 'rb')
+		local dat = f:read("*all")
+		f:flush()
+		f:close()
+		return dat
+	end
+	function fs.writeAll(path, data)
+		local f = io.open(path, 'wb')
+		f:write(data)
+		f:flush()
+		f:close()
+	end
+  function fs.readPart(path)
+		local f = io.open(path, 'rb')
+		return function(size, close)
+			if close then
+				f:flush()
+				f:close()
+			else
+				return f:read(size)
+			end
+		end
+	end
+	function fs.writePart(path)
+		local f = io.open(path, 'wb')
+		return function(data, close)
+			if close then
+				f:flush()
+				f:close()
+			else
+				return f:write(data)
+			end
+		end
+	end
 	_G.fs = fs
 end
 do
