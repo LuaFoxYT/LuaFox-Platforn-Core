@@ -1,6 +1,16 @@
 
 return function(cb, ...)
 	--made for luafox runtime--
+	local t = _G.type
+	_G.type = function(v)
+		if t(v) == 'table' then
+			if getmetatable(v) then
+			return (getmetatable(v).__type or t(v))
+			end
+		end
+		return t(v)
+		
+	end
 	local lfastr = require("lfastr")
 	local serpent = require("serpent")
 	local copas = require("copas")
