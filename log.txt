@@ -1,1 +1,34 @@
-Error: /home/hello/.config/lfrt/lfrtcl.lua:10: attempt to index a nil value (local 'f')	
+1	launch	
+2	launcher	
+/mnt/sdcard/Documents/LuaFox-Platforn-Core/.lfar-84018/	
+--[LuaFox Runtime Initialization]--	
+creating classtype: api	
+creating api: lfrt:term version 0	
+added class: lfrt:term of type [api]	
+creating api: lfrt:term version 1	
+added class: lfrt:term of type [api]	
+creating api: lfrt:filesystem version 0	
+added class: lfrt:filesystem of type [api]	
+creating api: lfrt:fs version 1	
+added class: lfrt:fs of type [api]	
+creating api: lfrt:tbfs version 0	
+added class: lfrt:tbfs of type [api]	
+classtype: 004-tbfs.lua:50: API of that version not available (API: filesystem v1	
+creating api: lfrt:json version 0	
+added class: lfrt:json of type [api]	
+creating api: lfrt:lfpk version 0	
+added class: lfrt:lfpk of type [api]	
+checking for luagoobject	
+found!	
+creating classtype: window	
+creating classtype: label	
+creating classtype: button	
+creating classtype: entry	
+creating api: lfrt:runtime version 0	
+added class: lfrt:runtime of type [api]	
+--[Appliation Start]--	
+added class: LuaFoxYT:window of type [window]	
+added class: LuaFoxYT:Label0 of type [label]	
+added class: LuaFoxYT:num of type [entry]	
+added class: LuaFoxYT:launchAsGFX of type [button]	
+added class: LuaFoxYT:launchAsTerm of type [button]	
